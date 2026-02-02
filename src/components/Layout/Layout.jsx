@@ -22,10 +22,7 @@ const Layout = ({ children }) => {
             <footer className="footer">
                 <div className="container footer-content">
                     <p>&copy; {new Date().getFullYear()} Andrea Rottini - Technical Artist</p>
-                    <div className="footer-social">
-                        <a href="https://www.linkedin.com/in/andrea-rottini/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                        <a href="https://www.artstation.com/andrearottini" target="_blank" rel="noopener noreferrer">ArtStation</a>
-                    </div>
+
                 </div>
             </footer>
         </div>

@@ -92,7 +92,7 @@ h6 {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--bg-tertiary);
+  background: var(--accent-primary);
   border-radius: 4px;
 }
 
