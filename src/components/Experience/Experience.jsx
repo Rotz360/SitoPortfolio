@@ -3,8 +3,8 @@ import './Experience.css';
 
 const experienceData = [
     {
-        period: "2023 - 2024",
-        role: "Junior Technical Artist",
+        period: "2023 - Present",
+        role: "Mid Technical Artist",
         company: "Couch Heroes (Remote)",
         description: "Joined the Indie game company Couch Heroes working fully remote from Italy. Focused on technical art pipelines and asset integration."
     },
@@ -32,7 +32,7 @@ const Experience = () => {
     return (
         <section id="experience" className="experience-section">
             <div className="container">
-                <h2 className="section-title">My <span className="highlight">Journey</span></h2>
+                <h2 className="section-title">My Journey</h2>
 
                 <div className="timeline">
                     {experienceData.map((item, index) => (

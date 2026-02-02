@@ -71,7 +71,7 @@ const Portfolio = () => {
     return (
         <section id="portfolio" className="portfolio-section">
             <div className="container">
-                <h2 className="section-title">Selected <span className="highlight">Works</span></h2>
+                <h2 className="section-title">Selected Works</h2>
 
                 <div className="portfolio-grid">
                     {projects.map((project) => (

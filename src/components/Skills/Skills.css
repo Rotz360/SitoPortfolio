@@ -10,10 +10,7 @@
 }
 
 .section-title .highlight {
-    color: var(--accent-secondary);
-    background: linear-gradient(to right, var(--accent-secondary), var(--accent-primary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--accent-primary);
 }
 
 .skills-grid {

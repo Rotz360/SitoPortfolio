@@ -5,7 +5,7 @@ const Contact = () => {
     return (
         <section id="contact" className="contact-section">
             <div className="container">
-                <h2 className="section-title">Get In <span className="highlight">Touch</span></h2>
+                <h2 className="section-title">Get In Touch</h2>
 
                 <div className="contact-content">
                     <div className="contact-info">
@@ -23,9 +23,8 @@ const Contact = () => {
                         </div>
 
                         <div className="social-links">
-                            {/* Add social icons later */}
-                            <a href="#" className="social-link">LinkedIn</a>
-                            <a href="#" className="social-link">ArtStation</a>
+                            <a href="https://www.linkedin.com/in/andrea-rottini/" target="_blank" rel="noopener noreferrer" className="social-link">LinkedIn</a>
+                            <a href="https://www.artstation.com/andrearottini" target="_blank" rel="noopener noreferrer" className="social-link">ArtStation</a>
                         </div>
                     </div>
 
