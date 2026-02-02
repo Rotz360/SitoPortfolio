@@ -2,7 +2,7 @@ import React from 'react';
 import './Portfolio.css';
 
 // Import images
-// import leilaImg from '../../assets/portfolio/leila.jpg';
+import leilaImg from '../../assets/portfolio/Leila.jpg';
 // import combatFieldImg from '../../assets/portfolio/combat-field.jpg';
 import cloudsImg from '../../assets/portfolio/clouds.jpg';
 import ldrImg from '../../assets/portfolio/ldr.jpg';
@@ -15,18 +15,32 @@ const placeholderImg = "https://placehold.co/600x400/2a2a2a/FFF?text=Image+Not+A
 
 const projects = [
     {
-        id: 1,
-        title: "Leila - The Land of Imagination",
-        category: "VFX / Multimedia",
+        id: 10,
+        title: "Procedural Generation Content (PCG)",
+        category: "Technical Art / Tools",
         image: placeholderImg,
-        description: "Work for Saudi Arabian National Day 2019. Served as Multimedia Designer creating immersive visual effects."
+        description: "Exploration of procedural content generation techniques in Unreal Engine 5."
     },
     {
-        id: 2,
-        title: "Riyadh Season 2021",
-        category: "Combat Field Design",
+        id: 11,
+        title: "Shader Studies",
+        category: "Technical Art / Shaders",
         image: placeholderImg,
-        description: "Designed the Combat Field layout and visual elements for this major event."
+        description: "Collection of advanced shader sketches and material studies."
+    },
+    {
+        id: 12,
+        title: "Tool Studies",
+        category: "Technical Art / Tools",
+        image: placeholderImg,
+        description: "Custom editor tools and pipeline automation scripts."
+    },
+    {
+        id: 13,
+        title: "Houdini Tools",
+        category: "Technical Art / Procedural",
+        image: placeholderImg,
+        description: "Procedural assets and tools created with SideFX Houdini."
     },
     {
         id: 3,
@@ -61,7 +75,47 @@ const projects = [
         title: "Aquarium VR",
         category: "Interactive / VR",
         image: aquariumImg,
-        description: "Interactive Encyclopedia VR experience exploring aquatic life."
+        videoUrl: "https://www.youtube.com/watch?v=yVSJzF-MU0c",
+        description: "Interactive Encyclopedia VR experience exploring aquatic life.",
+        detailedContent: [
+            {
+                text: "VR project created for the Fine Arts Academy Thesis."
+            },
+            {
+                text: "AQUARIUM is a VR Interactive Encyclopedia application where you can Explore in VR a marine environment to discover scientific and biological informations from the living species swimming around."
+            },
+            {
+                text: "The main idea of this projects came to my mind because I wanted to create something that merged my two study paths, the Scientific one (from High School and the first Year of University) and the Artistic one where I got graduated."
+            },
+            {
+                text: "I wanted to create something useful for learing at school in a new, interactive and funny way... also because I got really bored from the books pictures and I could not ever imagine what was going on in the real world."
+            },
+            {
+                heading: "WORKFLOW",
+                text: "I started building the Environment in Unity, the software we mostly used in Academy, being very careful to not make it too dense because the of the VR target."
+            },
+            {
+                text: "I also had a lot of research about Marine Life and Underwater Environment to place the props in the most realistic way possible but also to place the fish in their natural habitat."
+            },
+            {
+                text: "Once I populated the environment I added the fish from a Unity Pack from Marketplace and added a path for every fish that would have followed during the playthrough. I also added fish flocking for smaller fish and coral related fish."
+            },
+            {
+                text: "Then I added the full movement control for VR and also a Raycast from the Right Hand in which players had to scan the fish (what will properly stop in place) to discover their informations with an interactive card that wll be stored later in a Fish Agenda."
+            },
+            {
+                text: "In the game at the end there are more than 20 fish to collect and a large map to explore to discover curiosities about the Marine Fauna."
+            }
+        ]
+    },
+    {
+        id: 1,
+        title: "Multimedia Design",
+        category: "Visual Effects & Events",
+        image: leilaImg,
+        videoUrl: "https://www.youtube.com/watch?v=JwbahYdfbN0",
+        description: "Includes major projects like 'Leila - The Land of Imagination' (Saudi National Day 2019) and 'Riyadh Season 2021' (Combat Field Design).",
+        technologies: ["Unreal Engine 5"]
     }
 ];
 
@@ -104,3 +158,4 @@ const Portfolio = () => {
 };
 
 export default Portfolio;
+// Forced update

@@ -31,29 +31,51 @@ const ProjectOverlay = ({ project, onClose }) => {
                     <h2 className="overlay-title">{project.title}</h2>
                     <div className="overlay-description">
                         <p>{project.description}</p>
-                        {/* Extended description placeholder - in real usage, this would come from the project data */}
-                        <p className="extended-text">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                        </p>
-                        <p className="extended-text">
-                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-                        </p>
-                        <p className="extended-text">
-                            Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-                        </p>
-                        <p className="extended-text">
-                            Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
-                        </p>
-                        <p className="extended-text">
-                            Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.
-                        </p>
-                    </div>
 
-                    <div className="overlay-tags">
-                        {/* Placeholder tags based on category */}
-                        <span className="tech-tag">Unity</span>
-                        <span className="tech-tag">C#</span>
-                        <span className="tech-tag">VFX Graph</span>
+                        {project.videoUrl && (
+                            <div className="video-container" style={{ marginTop: '2rem', marginBottom: '2rem' }}>
+                                <iframe
+                                    width="100%"
+                                    height="400"
+                                    src={project.videoUrl.replace('watch?v=', 'embed/')}
+                                    title="YouTube video player"
+                                    frameBorder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen
+                                    style={{ borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)' }}
+                                ></iframe>
+                            </div>
+                        )}
+
+                        {/* Render detailed content if available */}
+                        {project.detailedContent && project.detailedContent.map((section, index) => (
+                            <div key={index} className="extended-text-section">
+                                {section.heading && <h3 className="overlay-subtitle">{section.heading}</h3>}
+                                <p className="extended-text">{section.text}</p>
+                            </div>
+                        ))}
+
+                        {/* Fallback for placeholder text if no detail content is present (only for placeholder items) */}
+                        {!project.detailedContent && !project.videoUrl && (
+                            <p className="extended-text">
+                                No additional details available for this project yet.
+                            </p>
+                        )}
+
+                        <div className="overlay-tags">
+                            {project.technologies ? (
+                                project.technologies.map((tech, index) => (
+                                    <span key={index} className="tech-tag">{tech}</span>
+                                ))
+                            ) : (
+                                /* Fallback tags if none specified, or empty */
+                                <>
+                                    <span className="tech-tag">Unity</span>
+                                    <span className="tech-tag">C#</span>
+                                    <span className="tech-tag">VFX Graph</span>
+                                </>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>
