@@ -1,0 +1,34 @@
+import React from 'react';
+import './Skills.css';
+
+const skillsData = [
+    { category: "Engines", items: ["Unity", "Unreal Engine 5"] },
+    { category: "3D & Art", items: ["Blender", "Maya", "Substance Painter", "Photoshop", "ZBrush"] },
+    { category: "Programming", items: ["C#", "Python", "C++"] },
+    { category: "Technical", items: ["HLSL/GLSL", "Shader Graph", "VFX Graph", "Performance Profiling", "Rigging"] }
+];
+
+const Skills = () => {
+    return (
+        <section id="skills" className="skills-section">
+            <div className="container">
+                <h2 className="section-title">Technical <span className="highlight">Proficiency</span></h2>
+
+                <div className="skills-grid">
+                    {skillsData.map((group, index) => (
+                        <div key={index} className="skill-card">
+                            <h3 className="skill-category">{group.category}</h3>
+                            <div className="skill-tags">
+                                {group.items.map((skill, idx) => (
+                                    <span key={idx} className="skill-tag">{skill}</span>
+                                ))}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+};
+
+export default Skills;
