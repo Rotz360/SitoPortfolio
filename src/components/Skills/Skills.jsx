@@ -3,9 +3,9 @@ import './Skills.css';
 
 const skillsData = [
     { category: "Engines", items: ["Unreal Engine 5", "Unity"] },
-    { category: "3D & Art", items: ["Houdini", "Maya", "ZBrush", "Blender", "Substance Painter", "Substance Designer", "Photoshop"] },
+    { category: "3D Softwares", items: ["Houdini", "Maya", "ZBrush", "Blender", "Substance Painter", "Substance Designer", "Photoshop"] },
     { category: "Programming", items: ["C++", "Python", "C#"] },
-    { category: "Technical", items: ["Shader", "Niagara VFX", "Performance Profiling", "HLSL", "Rigging"] }
+    { category: "Technical Skills", items: ["Shader", "Niagara VFX", "Performance Profiling", "HLSL", "Rigging"] }
 ];
 
 const Skills = () => {
