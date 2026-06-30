@@ -1,23 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './ProjectOverlay.css';
 
 const ProjectOverlay = ({ project, onClose }) => {
     // Lock body scroll when modal is open and prevent layout shift
-    React.useEffect(() => {
+    useEffect(() => {
+        const originalPadding = window.getComputedStyle(document.body).paddingRight;
+        const originalOverflow = document.body.style.overflow;
+        
         const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
         document.body.style.paddingRight = `${scrollbarWidth}px`;
         document.body.style.overflow = 'hidden';
 
         return () => {
-            document.body.style.paddingRight = '0px';
-            document.body.style.overflow = 'unset';
+            document.body.style.paddingRight = originalPadding;
+            document.body.style.overflow = originalOverflow;
         };
     }, []);
 
-
-    const [selectedImageIndex, setSelectedImageIndex] = React.useState(null);
-    const [standaloneImage, setStandaloneImage] = React.useState(null);
-    const [activeModule, setActiveModule] = React.useState(null);
+    const [selectedImageIndex, setSelectedImageIndex] = useState(null);
+    const [standaloneImage, setStandaloneImage] = useState(null);
+    const [activeModule, setActiveModule] = useState(null);
 
     const openLightbox = (content) => {
         if (typeof content === 'number') {
@@ -35,26 +37,29 @@ const ProjectOverlay = ({ project, onClose }) => {
     };
 
     // Reset active module when overlay closes
-    React.useEffect(() => {
+    useEffect(() => {
         if (!project) setActiveModule(null);
     }, [project]);
 
+    // Determine data to display (Main Project or Active Module)
+    const displayData = activeModule || project;
+
     const nextImage = (e) => {
         e.stopPropagation();
-        if (selectedImageIndex !== null && project.gallery) {
-            setSelectedImageIndex((prev) => (prev + 1) % project.gallery.length);
+        if (selectedImageIndex !== null && displayData?.gallery) {
+            setSelectedImageIndex((prev) => (prev + 1) % displayData.gallery.length);
         }
     };
 
     const prevImage = (e) => {
         e.stopPropagation();
-        if (selectedImageIndex !== null && project.gallery) {
-            setSelectedImageIndex((prev) => (prev - 1 + project.gallery.length) % project.gallery.length);
+        if (selectedImageIndex !== null && displayData?.gallery) {
+            setSelectedImageIndex((prev) => (prev - 1 + displayData.gallery.length) % displayData.gallery.length);
         }
     };
 
     // Keyboard navigation
-    React.useEffect(() => {
+    useEffect(() => {
         const handleKeyDown = (e) => {
             if (activeModule) {
                 if (e.key === 'Backspace') setActiveModule(null);
@@ -77,10 +82,7 @@ const ProjectOverlay = ({ project, onClose }) => {
 
     // Determine current image for lightbox
     const isLightboxOpen = selectedImageIndex !== null || standaloneImage !== null;
-    const currentLightboxImage = selectedImageIndex !== null && project.gallery ? project.gallery[selectedImageIndex] : standaloneImage;
-
-    // Determine data to display (Main Project or Active Module)
-    const displayData = activeModule || project;
+    const currentLightboxImage = selectedImageIndex !== null && displayData?.gallery ? displayData.gallery[selectedImageIndex] : standaloneImage;
 
     return (
         <div className="overlay-backdrop" onClick={onClose}>
@@ -162,7 +164,20 @@ const ProjectOverlay = ({ project, onClose }) => {
                                 <iframe
                                     width="100%"
                                     height="400"
-                                    src={displayData.videoUrl.replace('watch?v=', 'embed/')}
+                                    src={(() => {
+                                        try {
+                                            const url = new URL(displayData.videoUrl);
+                                            if (url.hostname === 'youtu.be') {
+                                                return `https://www.youtube.com/embed${url.pathname}`;
+                                            } else if (url.hostname.includes('youtube.com')) {
+                                                const videoId = url.searchParams.get('v');
+                                                if (videoId) return `https://www.youtube.com/embed/${videoId}`;
+                                            }
+                                            return displayData.videoUrl;
+                                        } catch (e) {
+                                            return displayData.videoUrl.replace('watch?v=', 'embed/');
+                                        }
+                                    })()}
                                     title="YouTube video player"
                                     frameBorder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -183,7 +198,20 @@ const ProjectOverlay = ({ project, onClose }) => {
                                             <iframe
                                                 width="100%"
                                                 height="400"
-                                                src={section.video.replace('watch?v=', 'embed/')}
+                                                src={(() => {
+                                                    try {
+                                                        const url = new URL(section.video);
+                                                        if (url.hostname === 'youtu.be') {
+                                                            return `https://www.youtube.com/embed${url.pathname}`;
+                                                        } else if (url.hostname.includes('youtube.com')) {
+                                                            const videoId = url.searchParams.get('v');
+                                                            if (videoId) return `https://www.youtube.com/embed/${videoId}`;
+                                                        }
+                                                        return section.video;
+                                                    } catch (e) {
+                                                        return section.video.replace('watch?v=', 'embed/');
+                                                    }
+                                                })()}
                                                 title="YouTube video player"
                                                 frameBorder="0"
                                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -265,15 +293,15 @@ const ProjectOverlay = ({ project, onClose }) => {
                         )}
 
                         {/* Image Gallery Thumbnails - Moved to bottom */}
-                        {project.gallery && project.gallery.length > 0 && !activeModule && (
+                        {displayData.gallery && displayData.gallery.length > 0 && (
                             <div className="project-gallery-grid">
-                                {project.gallery.map((img, index) => (
+                                {displayData.gallery.map((img, index) => (
                                     <div
                                         key={index}
                                         className="gallery-thumbnail"
                                         onClick={() => openLightbox(index)}
                                     >
-                                        <img src={img} alt={`${project.title} gallery ${index + 1}`} />
+                                        <img src={img} alt={`${displayData.title} gallery ${index + 1}`} />
                                     </div>
                                 ))}
                             </div>
@@ -303,19 +331,19 @@ const ProjectOverlay = ({ project, onClose }) => {
                     <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
                         <button className="lightbox-close" onClick={closeLightbox}>×</button>
 
-                        {selectedImageIndex !== null && (
+                        {selectedImageIndex !== null && displayData?.gallery?.length > 1 && (
                             <button className="lightbox-nav prev" onClick={prevImage}>&#10094;</button>
                         )}
 
                         <img src={currentLightboxImage} alt={`Fullscreen view`} />
 
-                        {selectedImageIndex !== null && (
+                        {selectedImageIndex !== null && displayData?.gallery?.length > 1 && (
                             <button className="lightbox-nav next" onClick={nextImage}>&#10095;</button>
                         )}
 
-                        {selectedImageIndex !== null && project.gallery && (
+                        {selectedImageIndex !== null && displayData?.gallery && (
                             <div className="lightbox-counter">
-                                {selectedImageIndex + 1} / {project.gallery.length}
+                                {selectedImageIndex + 1} / {displayData.gallery.length}
                             </div>
                         )}
                     </div>

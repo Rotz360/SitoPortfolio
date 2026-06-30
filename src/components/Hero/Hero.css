@@ -76,8 +76,6 @@
 
 @media (max-width: 968px) {
     .hero-content {
-        flex-direction: column-reverse;
-        /* Text on top on mobile, or image on top? usually text first or image first context dependent. Let's do column-reverse to put text on bottom if we want image first, but standard is text first. Let's do flex-direction: column for Image BELOW text, or column-reverse for Image ABOVE text. User asked for image NEXT to text. On mobile, usually image goes top or bottom. Let's just stack them. */
         flex-direction: column;
         gap: 3rem;
         text-align: center;

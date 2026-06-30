@@ -16,11 +16,11 @@ const Skills = () => {
 
                 <div className="skills-grid">
                     {skillsData.map((group, index) => (
-                        <div key={index} className="skill-card">
+                        <div key={`skill-group-${group.category.replace(/\s+/g, '-')}-${index}`} className="skill-card">
                             <h3 className="skill-category">{group.category}</h3>
                             <div className="skill-tags">
                                 {group.items.map((skill, idx) => (
-                                    <span key={idx} className="skill-tag">{skill}</span>
+                                    <span key={`skill-${skill.replace(/\s+/g, '-')}-${idx}`} className="skill-tag">{skill}</span>
                                 ))}
                             </div>
                         </div>

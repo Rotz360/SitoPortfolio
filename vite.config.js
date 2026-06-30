@@ -6,6 +6,11 @@ export default defineConfig(({ command }) => {
   const config = {
     plugins: [react()],
     base: '/',
+    server: {
+      port: 5173,
+      strictPort: true,
+      host: true,
+    },
   }
 
   if (command !== 'serve') {

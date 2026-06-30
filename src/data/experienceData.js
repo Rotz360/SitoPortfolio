@@ -1,7 +1,4 @@
-import React from 'react';
-import './Experience.css';
-
-const experienceData = [
+export const experienceData = [
     {
         period: "2023 - Present",
         role: "Mid Technical Artist",
@@ -27,29 +24,3 @@ const experienceData = [
         description: "Graduated with a degree in Fine Arts. Learned basics of 3D Modeling, Animation, Rigging, Photoshop, and Unity Game Development."
     }
 ];
-
-const Experience = () => {
-    return (
-        <section id="experience" className="experience-section">
-            <div className="container">
-                <h2 className="section-title">Experience</h2>
-
-                <div className="timeline">
-                    {experienceData.map((item, index) => (
-                        <div key={`exp-${item.company.replace(/\s+/g, '-')}-${index}`} className="timeline-item">
-                            <div className="timeline-dot"></div>
-                            <div className="timeline-date">{item.period}</div>
-                            <div className="timeline-content">
-                                <h3>{item.role}</h3>
-                                <h4>{item.company}</h4>
-                                <p>{item.description}</p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
-};
-
-export default Experience;

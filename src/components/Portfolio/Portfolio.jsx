@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Portfolio.css';
 
 // Import images
 import leilaImg from '../../assets/portfolio/Leila.jpg';
-// import combatFieldImg from '../../assets/portfolio/combat-field.jpg';
 import cloudsImg from '../../assets/portfolio/clouds.jpg';
 import ldrImg from '../../assets/portfolio/ldr.jpg';
 import cosiComodoImg from '../../assets/portfolio/cosiComodo.jpg';
@@ -17,6 +16,10 @@ import berserker02 from '../../assets/portfolio/Berserker/andrea-rottini-02.jpg'
 import berserker06 from '../../assets/portfolio/Berserker/andrea-rottini-06.jpg';
 
 import aquariumImg from '../../assets/portfolio/aquarium.png';
+
+import coverLandscapePatchImg from '../../assets/portfolio/Cover_LandscapePatch.png';
+import landscapePatch1Img from '../../assets/portfolio/LandscapePatch1.png';
+import landscapePatch2Img from '../../assets/portfolio/LandscapePatch2.png';
 
 // Skyup LDR Images
 import skyupFrame1 from '../../assets/portfolio/Skyup/FrameScena_01_PostComp.jpg';
@@ -34,7 +37,7 @@ const placeholderImg = "https://placehold.co/600x400/2a2a2a/FFF?text=Image+Not+A
 const projects = [
     {
         id: 10,
-        title: "Procedural Generation Content (PCG)",
+        title: "Procedural Content Generation (PCG)",
         category: "Technical Art / Tools",
         image: placeholderImg,
         description: "Exploration of procedural content generation techniques in Unreal Engine 5.",
@@ -63,10 +66,10 @@ const projects = [
             },
             {
                 id: "pcg4",
-                title: "PCG River Tool",
+                title: "PCG Vines Draw Tool",
                 image: placeholderImg,
-                description: "Spline-based river generation with flow mapping.",
-                detailedContent: [{ heading: "River Tool Breakdown", text: "How the river tool carves terrain and generates water meshes." }]
+                description: "Procedural tool for drawing and generating vines dynamically.",
+                detailedContent: [{ heading: "Vines Draw Logic", text: "Techniques used for real-time spline drawing and vine generation." }]
             }
         ]
     },
@@ -105,6 +108,34 @@ const projects = [
                 image: placeholderImg,
                 description: "Stylized lighting model for non-photorealistic rendering.",
                 detailedContent: [{ heading: "Fake Lighting Math", text: "Custom lighting calculations using dot products and ramp textures." }]
+            },
+            {
+                id: "s5",
+                title: "Corruption Shader",
+                image: placeholderImg,
+                description: "Procedural shader used to simulate dynamic spreading corruption.",
+                detailedContent: [{ heading: "Corruption Setup", text: "Distance fields and noise parameters for the spread effect." }]
+            },
+            {
+                id: "s6",
+                title: "HLSL Lava Lamp Shader",
+                image: placeholderImg,
+                description: "Custom HLSL implementation of a lava lamp fluid simulation.",
+                detailedContent: [{ heading: "HLSL Details", text: "Raymarching and SDFs used for the lava blobs." }]
+            },
+            {
+                id: "s7",
+                title: "Water Shader",
+                image: placeholderImg,
+                description: "Stylized and realistic water shader studies.",
+                detailedContent: [{ heading: "Water Simulation", text: "Depth fading, refraction, and surface wave normals." }]
+            },
+            {
+                id: "s8",
+                title: "Glass Shader",
+                image: placeholderImg,
+                description: "Refractive glass material with edge tinting and imperfections.",
+                detailedContent: [{ heading: "Refraction Control", text: "IOR tweaks and roughness masking for realistic glass." }]
             }
         ]
     },
@@ -139,10 +170,35 @@ const projects = [
             },
             {
                 id: "ts4",
-                title: "Editor Scripting",
+                title: "Texel Density Checker Tool",
                 image: placeholderImg,
-                description: "Python and C++ automation scripts for the editor.",
-                detailedContent: [{ heading: "Automation", text: "Examples of pipeline tasks automated via editor scripting." }]
+                description: "Editor utility tool to visualize and normalize texel density across static meshes.",
+                detailedContent: [{ heading: "Texel Density Visualizer", text: "Custom editor mode for checking texture resolution scaling." }]
+            },
+            {
+                id: "ts5",
+                title: "Validators",
+                image: placeholderImg,
+                description: "Automated validation scripts to ensure asset compliance and naming conventions.",
+                detailedContent: [{ heading: "Asset Validation", text: "Python and Blueprint automated checks for the project repository." }]
+            },
+            {
+                id: "ts6",
+                title: "Landscape Patch Tool",
+                image: coverLandscapePatchImg,
+                videoUrl: "https://www.youtube.com/watch?v=epDsShR7Wgo",
+                description: "Editor tool for quickly modifying and patching landscape segments.",
+                detailedContent: [
+                    { heading: "HOW IT WORKS", text: "This is an editor tool to process heightmap data and alpha masks to blend the patch seamlessly with the existing terrain." },
+                    { text: "Drag and Drop it in the Level, Select the Height Texture and adjust the Texture Patch Size and Height Texture Scale Max parameter to set the size of the patch and the strength of the height deformation." },
+                    { text: "Is also possible to change the Blend Mode to blend seamlessly multiple Landscape Patches Tools." },
+                    { text: "This is a non desctructive workflow useful for world building and easily change the look of a landscape." },
+                    { text: "The Landscape Material adapts to the deformation and also do the PCG, the Landscape grass and the RVT." }
+                ],
+                gallery: [
+                    landscapePatch1Img,
+                    landscapePatch2Img
+                ]
             }
         ]
     },
@@ -170,17 +226,10 @@ const projects = [
             },
             {
                 id: "ht3",
-                title: "VAT Fluid Sim",
+                title: "COPs Texture Split",
                 image: placeholderImg,
-                description: "Vertex Animation Texture workflow for real-time fluids.",
-                detailedContent: [{ heading: "VAT Workflow", text: "Pipeline for exporting Houdini fluid sims to game engines using VAT." }]
-            },
-            {
-                id: "ht4",
-                title: "Cable Generator",
-                image: placeholderImg,
-                description: "Procedural cable and wire generation tool.",
-                detailedContent: [{ heading: "Cable Tool", text: "Logic for generating hanging cables with physics-based slack." }]
+                description: "Houdini Composite Operators (COPs) setup for channel packing and texture splitting.",
+                detailedContent: [{ heading: "Texture Packing Engine", text: "Automated extraction and merging of RGB mask channels." }]
             }
         ]
     },
@@ -385,7 +434,7 @@ const projects = [
 ];
 
 const Portfolio = () => {
-    const [selectedProject, setSelectedProject] = React.useState(null);
+    const [selectedProject, setSelectedProject] = useState(null);
 
     return (
         <section id="portfolio" className="portfolio-section">
@@ -423,4 +472,3 @@ const Portfolio = () => {
 };
 
 export default Portfolio;
-// Forced update

@@ -155,3 +155,7 @@
     font-size: 0.875rem;
     background: var(--bg-secondary);
 }
+
+body.menu-open {
+    overflow: hidden;
+}

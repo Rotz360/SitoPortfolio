@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Layout.css';
 
 const Layout = ({ children }) => {
-    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    useEffect(() => {
+        if (isMenuOpen) {
+            document.body.classList.add('menu-open');
+        } else {
+            document.body.classList.remove('menu-open');
+        }
+        
+        return () => {
+            document.body.classList.remove('menu-open');
+        };
+    }, [isMenuOpen]);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -16,7 +28,7 @@ const Layout = ({ children }) => {
         <div className="layout">
             <header className="header">
                 <div className="container header-content">
-                    <div className="logo"></div>
+                    <div className="logo">A. ROTTINI</div>
                     <button className="mobile-menu-btn" onClick={toggleMenu} aria-label="Toggle menu">
                         <span className={`hamburger ${isMenuOpen ? 'open' : ''}`}></span>
                     </button>
@@ -35,7 +47,6 @@ const Layout = ({ children }) => {
             <footer className="footer">
                 <div className="container footer-content">
                     <p>&copy; {new Date().getFullYear()} Andrea Rottini - Technical Artist</p>
-
                 </div>
             </footer>
         </div>
