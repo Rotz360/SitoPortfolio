@@ -1,6 +1,5 @@
 .contact-section {
-    padding: 100px 0;
-    background-color: var(--bg-secondary);
+    padding: var(--section-spacing) 0;
 }
 
 .contact-content {

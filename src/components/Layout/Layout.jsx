@@ -26,9 +26,10 @@ const Layout = ({ children }) => {
 
     return (
         <div className="layout">
+            <div className="global-bg"></div>
             <header className="header">
                 <div className="container header-content">
-                    <div className="logo">A. ROTTINI</div>
+                    <div className="logo"></div>
                     <button className="mobile-menu-btn" onClick={toggleMenu} aria-label="Toggle menu">
                         <span className={`hamburger ${isMenuOpen ? 'open' : ''}`}></span>
                     </button>

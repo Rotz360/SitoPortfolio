@@ -153,7 +153,6 @@
     text-align: center;
     color: var(--text-secondary);
     font-size: 0.875rem;
-    background: var(--bg-secondary);
 }
 
 body.menu-open {

@@ -78,7 +78,7 @@ const projects = [
         title: "Shader Studies",
         category: "Technical Art / Shaders",
         image: placeholderImg,
-        description: "Collection of advanced shader sketches and material studies.",
+        description: "Collection of advanced shaders and material studies",
         technologies: ["Unreal Engine 5"],
         modules: [
             {
@@ -136,6 +136,20 @@ const projects = [
                 image: placeholderImg,
                 description: "Refractive glass material with edge tinting and imperfections.",
                 detailedContent: [{ heading: "Refraction Control", text: "IOR tweaks and roughness masking for realistic glass." }]
+            },
+            {
+                id: "s9",
+                title: "Character Shader",
+                image: placeholderImg,
+                description: "Advanced character material with skin subsurface scattering.",
+                detailedContent: [{ heading: "Character Shading", text: "Details on SSS profile and micro-detail texturing." }]
+            },
+            {
+                id: "s10",
+                title: "Weapons Shader",
+                image: placeholderImg,
+                description: "Hard surface weapon material with customizable wear and tear.",
+                detailedContent: [{ heading: "Weapon Shading", text: "Edge wear masks and dynamic dirt accumulation." }]
             }
         ]
     },
@@ -199,6 +213,13 @@ const projects = [
                     landscapePatch1Img,
                     landscapePatch2Img
                 ]
+            },
+            {
+                id: "ts7",
+                title: "Destructibles",
+                image: placeholderImg,
+                description: "Setup and optimization for destructible assets.",
+                detailedContent: [{ heading: "Destructible Workflow", text: "Chaos destruction setup and debris optimization." }]
             }
         ]
     },
@@ -230,6 +251,13 @@ const projects = [
                 image: placeholderImg,
                 description: "Houdini Composite Operators (COPs) setup for channel packing and texture splitting.",
                 detailedContent: [{ heading: "Texture Packing Engine", text: "Automated extraction and merging of RGB mask channels." }]
+            },
+            {
+                id: "ht4",
+                title: "VAT Driven Animation",
+                image: placeholderImg,
+                description: "Vertex Animation Textures exported from Houdini to Unreal Engine.",
+                detailedContent: [{ heading: "VAT Setup", text: "Exporting fluid and cloth simulations using Vertex Animation Textures." }]
             }
         ]
     },
@@ -439,7 +467,7 @@ const Portfolio = () => {
     return (
         <section id="portfolio" className="portfolio-section">
             <div className="container">
-                <h2 className="section-title">Selected Works</h2>
+                <h2 className="section-title">Featured Projects</h2>
 
                 <div className="portfolio-grid">
                     {projects.map((project) => (
