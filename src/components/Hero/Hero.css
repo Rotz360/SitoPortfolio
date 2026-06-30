@@ -1,12 +1,13 @@
 .hero {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     position: relative;
     overflow: hidden;
     margin-top: calc(var(--header-height) * -1);
     /* Full screen including header area */
-    padding-top: var(--header-height);
+    padding-top: calc(var(--header-height) + 2rem);
+    padding-bottom: 4rem;
 }
 
 
