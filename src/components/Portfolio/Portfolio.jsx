@@ -97,17 +97,17 @@ const projects = [
             },
             {
                 id: "s3",
-                title: "Armor Shader",
+                title: "Water Shader",
                 image: placeholderImg,
-                description: "Metal and cloth shader optimized for character armor.",
-                detailedContent: [{ heading: "Armor Material", text: "Anisotropic highlights and detail normal mapping for armor." }]
+                description: "Stylized and realistic water shader studies.",
+                detailedContent: [{ heading: "Water Simulation", text: "Depth fading, refraction, and surface wave normals." }]
             },
             {
                 id: "s4",
-                title: "Fake Lighting Shader",
+                title: "Props Shader",
                 image: placeholderImg,
-                description: "Stylized lighting model for non-photorealistic rendering.",
-                detailedContent: [{ heading: "Fake Lighting Math", text: "Custom lighting calculations using dot products and ramp textures." }]
+                description: "Optimized multi-purpose material for environmental props.",
+                detailedContent: [{ heading: "Props Shading", text: "Texture packing and customizable dirt parameters." }]
             },
             {
                 id: "s5",
@@ -125,17 +125,17 @@ const projects = [
             },
             {
                 id: "s7",
-                title: "Water Shader",
-                image: placeholderImg,
-                description: "Stylized and realistic water shader studies.",
-                detailedContent: [{ heading: "Water Simulation", text: "Depth fading, refraction, and surface wave normals." }]
-            },
-            {
-                id: "s8",
                 title: "Glass Shader",
                 image: placeholderImg,
                 description: "Refractive glass material with edge tinting and imperfections.",
                 detailedContent: [{ heading: "Refraction Control", text: "IOR tweaks and roughness masking for realistic glass." }]
+            },
+            {
+                id: "s8",
+                title: "Cloth Shader",
+                image: placeholderImg,
+                description: "Realistic cloth material with fuzz and micro-detail maps.",
+                detailedContent: [{ heading: "Cloth Shading", text: "Fuzz physics and woven thread detail texturing." }]
             },
             {
                 id: "s9",
@@ -146,10 +146,31 @@ const projects = [
             },
             {
                 id: "s10",
+                title: "Garment Shader",
+                image: placeholderImg,
+                description: "Advanced garment shading techniques for character apparel.",
+                detailedContent: [{ heading: "Garment Shading", text: "Layered materials for complex clothing." }]
+            },
+            {
+                id: "s11",
                 title: "Weapons Shader",
                 image: placeholderImg,
                 description: "Hard surface weapon material with customizable wear and tear.",
                 detailedContent: [{ heading: "Weapon Shading", text: "Edge wear masks and dynamic dirt accumulation." }]
+            },
+            {
+                id: "s12",
+                title: "Armor Shader",
+                image: placeholderImg,
+                description: "Metal and cloth shader optimized for character armor.",
+                detailedContent: [{ heading: "Armor Material", text: "Anisotropic highlights and detail normal mapping for armor." }]
+            },
+            {
+                id: "s13",
+                title: "Fake Lighting Shader",
+                image: placeholderImg,
+                description: "Stylized lighting model for non-photorealistic rendering.",
+                detailedContent: [{ heading: "Fake Lighting Math", text: "Custom lighting calculations using dot products and ramp textures." }]
             }
         ]
     },
