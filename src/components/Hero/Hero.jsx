@@ -15,7 +15,7 @@ const Hero = () => {
                         I specialize in Shader development, Houdini proceduralism, and deep game optimization.<br /><br />
                         Rather than getting stuck on traditional programming paradigms, I focus on communication and out-of-the-box thinking.<br /><br />
                         I love working side-by-side with Artists to build custom tools and shaders that speed up their workflow.<br /><br />
-                        I am constantly expanding my technical toolkit. My proactive approach to learning means I never shy away from a challenge: I quickly research, adapt, and implement new workflows to overcome any hurdle and keep the project moving forward.
+                        I am constantly expanding my technical toolkit, my proactive approach to learning means I never walk away from a challenge, I quickly research, adapt, and implement new workflows to overcome any hurdle and keep the project moving forward.
                     </p>
                     <div className="cta-group">
                         <a href="#portfolio" className="btn btn-primary">View Portfolio</a>
